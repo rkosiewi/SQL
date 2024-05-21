@@ -61,14 +61,14 @@ VALUES
 
 #Analysis Questions 
 
---Show what industries making at least $250 billion generate the most revenue ordered from greatest to least. Round to the nearest whole number
+## Show what industries making at least $250 billion generate the most revenue ordered from greatest to least. Round to the nearest whole number
 SELECT industry, ROUND(SUM(revenue)) AS total_revenue
 FROM fortune_companies
 GROUP BY industry
 HAVING total_revenue >= 250
 ORDER BY total_revenue DESC;
 
---Assign a status of either "YES" or "NO" for companies regarding a "mother friendly workplace". For companies allowing at least 8 or more weeks, Yes, otherwise, No. Display the mother friendly workplace companies in the Healthcare, Finance, Technology, and Manufacturing industries.
+## Assign a status of either "YES" or "NO" for companies regarding a "mother friendly workplace". For companies allowing at least 8 or more weeks, Yes, otherwise, No. Display the mother friendly workplace companies in the Healthcare, Finance, Technology, and Manufacturing industries.
 
 SELECT company_name, maternity_leave_weeks
 ,CASE
@@ -79,7 +79,7 @@ WHERE mother_friendly_workplace = "YES"
 AND industry IN ("Healthcare","Finance","Technology","Manufacturing")
 ;
 
---Find the companies with at least 100,000 employees that have healthcare benefits. With this criteria, what company offers the most days off?
+## Find the companies with at least 100,000 employees that have healthcare benefits. With this criteria, what company offers the most days off?
 
 SELECT company_name, healthcare_benefits, paid_time_off_days, employees
 FROM fortune_companies
@@ -88,13 +88,13 @@ ORDER BY paid_time_off_days DESC
 LIMIT 1;
 
 
---Which company in the Retail industry has the least revenue and what is their revenue?
+## Which company in the Retail industry has the least revenue and what is their revenue?
 
 SELECT company_name, MIN(revenue)
 FROM fortune_companies
 WHERE industry = "Retail";
 
---Which company in the Technology industry gives their employees the least amount of days off?
+## Which company in the Technology industry gives their employees the least amount of days off?
 
 SELECT company_name, MIN(paid_time_off_days)
 FROM fortune_companies
