@@ -1,0 +1,28 @@
+## The following analysis utilizes a digital media store database, Chinook, downloaded from Kaggle.
+
+# I answered the following questions:
+
+---Show Customers (their full names, customer ID, and country) who are not in the US.
+
+SELECT FirstName || ' ' || LastName AS FullName, CustomerID, Country
+FROM chinook.customers
+WHERE Country <> 'USA';
+
+
+--Show only the Customers from Brazil
+
+SELECT *
+FROM chinook.customers
+WHERE Country = 'Brazil';
+
+
+--Find the invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
+
+SELECT FirstName || ' ' || LastName as FullName, InvoiceId, InvoiceDate, BillingCountry
+FROM chinook.invoices inv
+
+LEFT JOIN chinook.customers cust
+ON inv.CustomerId = cust.CustomerId
+
+WHERE BillingCountry = 'Brazil';
+
